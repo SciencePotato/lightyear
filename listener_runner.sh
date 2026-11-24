@@ -1,15 +1,5 @@
 #!/bin/bash
-
-cd ~/lightyear
-
-echo "sourcing venv"
+set -euo pipefail
+cd -- "$(dirname -- "${BASH_SOURCE[0]}")"
 source venv/bin/activate
-echo "sourced venv"
-
-echo "starting listener"
-python3 listenerMain.py 
-echo "started listener"
-
-echo "deactivating venv"
-deactivate
-echo "deactivated venv"
+python3 listenerMain.py
