@@ -1,6 +1,11 @@
 
 # Map of Entire Project
 
+The Flask runner uses Gunicorn. Install `requirements.txt` into the active
+virtual environment before starting it. To check only that the server command
+is available, run `python -m gunicorn --version`; this does not start the app or
+connect to its external services.
+
 ### Sections
 1. emailValidity 
 2. flask
