@@ -1,6 +1,13 @@
 
 # Map of Entire Project
 
+The listener and weekly shell runners locate their own checkout and require its
+`venv/bin/activate`. Missing setup or Python failures stop the runner with a
+nonzero status. Weekly arguments are forwarded without splitting spaces.
+
+Run `python3 -m unittest discover -s tests -v` to test these wrappers with a fake
+Python command; this does not start the application or contact external services.
+
 ### Sections
 1. emailValidity 
 2. flask
