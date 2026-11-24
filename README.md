@@ -45,15 +45,17 @@ def make_celery(app):
 
 ```
 from celeryForProject import *
+from flask import Flask
 
 app = Flask(__name__)
 
 app.config['CELERY_BROKER_URL'] = 'amqp://guest:guest@localhost:5672/'
+app.config['CELERY_RESULT_BACKEND'] = 'rpc://'
 # app.config['CELERY_BACKEND'] = # for adding backend
 celery = make_celery(app)
 
 
-@app.route('/)
+@app.route('/<int:a>/<int:b>')
 def addi(a,b):
 
     mult.delay(a,b)
@@ -70,6 +72,9 @@ if __name__ == '__main__':
 ```
 - celery.task will return Multiplication string to terminal window with celery worker open
 - Addition string will return to terminal window associated with Flask
+- Visit `/2/3` to queue the multiplication and display the addition result.
+- Check the example offline with `python3 -m unittest discover -s tests -q`.
+  This uses Flask/Celery doubles and does not start a broker, worker, or web server.
 
 
 4. Set Up RabbitMQ (on MacOS)
