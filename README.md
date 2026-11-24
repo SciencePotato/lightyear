@@ -104,8 +104,14 @@ To Check whether worker is connected: http://localhost:15672/#/connections
 
 6. Start RabbitMQ Worker
 
+Run these commands in the directory containing the tutorial's `project.py`.
+The application target is the `celery` object created in that module.
+
 To run worker in Foreground:
-`$ celery -A flaskMain.celery worker -l INFO`
+`$ celery -A project.celery worker -l INFO`
+
+Check the recipe-to-worker target without importing the real application:
+`python3 -m unittest discover -s tests -v`.
 
 To run Worker in Background (Have not went over it:
 https://docs.celeryproject.org/en/latest/getting-started/next-steps.html#in-the-background
