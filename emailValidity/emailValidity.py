@@ -150,12 +150,11 @@ class emailValidation:
 		#print('Checked before saving')
 		if save:
 			filename = os.path.basename(self.filename)
+			saveLocation = "../flask/uploadFolder/"
 			if inplace:
-				saveLocation = "../flask/uploadFolder/"
 				filename = saveLocation+filename
 			else:
-				saveLoaction = "..flask/uploadFolder/"
-				filename = saveLocation+filename.split(".")+"_clean.csv"
+				filename = saveLocation+os.path.splitext(filename)[0]+"_clean.csv"
 
 			self.df.to_csv(filename, index=False)
 			return self.df
