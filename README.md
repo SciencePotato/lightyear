@@ -146,3 +146,17 @@ Handy stackoverflow posts:
 https://stackoverflow.com/questions/18133249/django-celery-cannot-connect-to-amqp-guest127-0-0-80005672
 2. https://stackoverflow.com/questions/49373825/kombu-exceptions-encodeerror-user-is-not-json-serializable
 3. https://stackoverflow.com/questions/25884951/attributeerror-flask-object-has-no-attribute-user-options
+
+## Legacy CSV export
+
+`emailValidation.check(save=True)` saves `<input-stem>_clean.csv` in the
+existing relative directory `../flask/uploadFolder/`. With `inplace=True`, it
+retains the input basename instead. The caller must provide that directory;
+this helper does not create it or change the working directory.
+
+The export-path regression uses an extracted method and an in-memory CSV writer,
+without importing the application or validating any email addresses:
+
+```sh
+python3 -m unittest discover -s tests -p test_email_export.py
+```
